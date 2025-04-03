@@ -1,0 +1,558 @@
+/* --- Reset & Base --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #0056b3; /* Darker Blue */
+    --secondary-color: #007bff; /* Brighter Blue */
+    --accent-color: #ffc107; /* Yellow/Gold Accent */
+    --light-gray: #f8f9fa;
+    --medium-gray: #e9ecef;
+    --dark-gray: #6c757d;
+    --text-color: #343a40;
+    --success-bg: #d1e7dd;
+    --success-text: #0f5132;
+    --error-bg: #f8d7da;
+    --error-text: #842029;
+    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --input-border: #ced4da;
+    --input-focus-border: #86b7fe;
+    --input-focus-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    padding: 20px;
+}
+
+.container {
+    max-width: 850px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    padding: 25px 35px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Contain child margins */
+}
+
+/* --- Header --- */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 2.5em;
+    color: var(--accent-color);
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.pro-credit {
+    font-size: 0.95em;
+    color: var(--dark-gray);
+    font-style: italic;
+}
+
+/* --- Card Style --- */
+.card {
+    background-color: #ffffff;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--medium-gray);
+}
+
+/* --- Info Standards --- */
+.info-standards {
+    background-color: var(--medium-gray); /* Stand out slightly */
+    border-left: 5px solid var(--secondary-color);
+    padding: 15px 20px;
+}
+
+.info-standards h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.standards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Slightly smaller min width */
+    gap: 10px 15px; /* Row, Column gap */
+    margin-bottom: 10px;
+    font-size: 0.95em;
+}
+.standards-grid strong {
+    color: var(--primary-color);
+}
+.standards-grid small {
+    font-size: 0.9em;
+    color: var(--dark-gray);
+}
+
+.info-note {
+    font-size: 0.85em;
+    color: var(--dark-gray);
+    margin-top: 10px;
+    font-style: italic;
+}
+.info-note.formula-ref { /* Style for formula references below calculators */
+     text-align: center;
+     line-height: 1.4;
+     margin-top: 15px;
+}
+.info-note small { /* For nested small tags */
+    font-size: 0.9em;
+    display: block; /* Ensure it takes its own line if needed */
+}
+
+/* --- Tabs --- */
+.tabs {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 5px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--input-border);
+    padding-bottom: 10px;
+}
+
+.tab-button {
+    padding: 10px 18px;
+    font-size: 0.95em;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: var(--dark-gray);
+    border-radius: 6px 6px 0 0;
+    transition: background-color 0.3s ease, color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 3px solid transparent;
+    font-weight: 500;
+    white-space: nowrap; /* Prevent button text wrapping */
+}
+
+.tab-button:hover {
+    background-color: var(--medium-gray);
+    color: var(--primary-color);
+}
+
+.tab-button.active {
+    background-color: #fff; /* Match card background */
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+    font-weight: 600;
+}
+
+.tab-content {
+    display: none; /* Hide tabs by default */
+    animation: fadeIn 0.5s ease; /* Simple fade-in animation */
+}
+
+.tab-content.active {
+    display: block; /* Show active tab */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); } /* Slight upward motion */
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Calculator Sections --- */
+.calculator-area h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px; /* Added more space below heading */
+    font-size: 1.4em;
+    text-align: center; /* Center headings */
+    border-bottom: 1px solid var(--medium-gray); /* Add subtle separator */
+    padding-bottom: 10px; /* Space between text and line */
+}
+
+.instructions {
+    font-size: 0.9em;
+    color: var(--dark-gray);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.calc-section { /* Added for general purpose section spacing */
+     margin-bottom: 20px;
+}
+
+.calc-grid {
+    display: grid;
+    gap: 15px 20px; /* Row gap, Column gap */
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.calc-grid.two-col {
+     grid-template-columns: auto 1fr; /* Label and Input */
+}
+
+.calc-grid label {
+    font-weight: 500;
+    text-align: right;
+    color: var(--text-color);
+    font-size: 0.95em;
+    padding-right: 5px; /* Small space before input */
+    cursor: default; /* So tooltip doesn't look like it's for clicking label */
+}
+/* Balloon tooltips styling override if needed */
+[aria-label][data-balloon-pos]:after {
+    font-size: 0.85em;
+    padding: 4px 8px;
+    z-index: 10; /* Ensure tooltips are on top */
+}
+
+.calc-grid input[type="number"],
+.calc-grid input[type="text"],
+.calc-grid select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--input-border);
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.calc-grid input[type="number"]:focus,
+.calc-grid input[type="text"]:focus,
+.calc-grid select:focus {
+    outline: none;
+    border-color: var(--input-focus-border);
+    box-shadow: var(--input-focus-shadow);
+}
+
+.calc-grid select {
+    cursor: pointer;
+}
+
+/* Styling for radio buttons and their labels */
+.calc-grid input[type="radio"] {
+     margin-right: 4px;
+     vertical-align: middle; /* Align radio button with label text */
+     accent-color: var(--primary-color); /* Color the radio button */
+     cursor: pointer;
+}
+.calc-grid label.radio-label { /* Style for labels next to radios */
+    font-weight: normal; /* Normal weight for options */
+    text-align: left; /* Align left */
+    margin-right: 15px; /* Space between radio options */
+    cursor: pointer; /* Indicate clickable */
+    display: inline-block; /* Keep on same line */
+    font-size: 0.95em;
+    vertical-align: middle;
+}
+.calc-grid > div { /* Target divs holding radio buttons in grid */
+     text-align: left; /* Ensure radios align left */
+}
+/* Styling for the VD method selection */
+.calc-section label { /* General label styling outside grid */
+    font-weight: 500;
+    display: block;
+    margin-bottom: 8px;
+}
+.calc-section input[type="radio"] {
+    margin-right: 4px;
+    vertical-align: middle;
+     accent-color: var(--primary-color);
+     cursor: pointer;
+}
+.calc-section label.radio-label {
+    font-weight: normal;
+    margin-right: 15px;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.output-field[readonly] {
+    background-color: var(--medium-gray);
+    font-weight: bold;
+    color: var(--primary-color);
+    cursor: text; /* Allow selecting text */
+    border-color: var(--medium-gray); /* Match background */
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px; /* More space above buttons */
+}
+
+button.calc-button, button.clear-button {
+    padding: 10px 25px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    min-width: 120px; /* Ensure buttons have some minimum width */
+}
+
+button.calc-button {
+    background-color: var(--secondary-color);
+}
+button.calc-button:hover {
+    background-color: var(--primary-color);
+}
+
+button.clear-button {
+    background-color: var(--dark-gray);
+}
+button.clear-button:hover {
+    background-color: #5a6268;
+}
+
+button.calc-button:active, button.clear-button:active {
+    transform: scale(0.97);
+}
+
+/* --- Result Messages --- */
+.result-message {
+    margin-top: 20px;
+    padding: 12px 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+    display: none; /* Hidden by default */
+    animation: slideDown 0.3s ease-out;
+    border-left-width: 5px; /* Add left border for emphasis */
+    border-left-style: solid;
+    font-size: 0.95em; /* Slightly smaller */
+    line-height: 1.4;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.result-message.success {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+    border-left-color: var(--success-text);
+    display: block;
+}
+
+.result-message.error {
+    background-color: var(--error-bg);
+    color: var(--error-text);
+    border-left-color: var(--error-text);
+    display: block;
+}
+
+/* --- Formula & Abbreviations Section --- */
+#formulas {
+    padding-top: 15px; /* Add padding above heading */
+}
+#formulas h2 {
+    text-align: left; /* Align main heading left */
+    border-bottom: none; /* Remove line below main heading */
+    margin-bottom: 20px;
+}
+#formulas h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.15em; /* Slightly larger */
+    margin-top: 20px;
+    border-bottom: 1px solid var(--medium-gray);
+    padding-bottom: 8px;
+    font-weight: 600;
+}
+#formulas ul {
+    list-style: none; /* Use custom symbols or none */
+    padding-left: 0;
+    margin-top: 10px;
+}
+#formulas li {
+    margin-bottom: 10px; /* More spacing */
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+#formulas code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    background-color: var(--medium-gray);
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: var(--primary-color); /* Make code stand out */
+    word-break: break-word; /* Allow long formulas to wrap */
+}
+#formulas li strong { /* Highlight term in formula list */
+    color: var(--text-color);
+}
+#formulas small {
+    display: block;
+    margin-left: 15px;
+    color: var(--dark-gray);
+    font-style: italic;
+    font-size: 0.9em; /* Slightly larger small text */
+    margin-top: 3px;
+}
+
+/* Style the grid layout for formulas */
+.formula-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
+    gap: 20px 30px; /* Row, Column gaps */
+    margin-top: 0; /* Remove top margin if h2 has enough */
+}
+.formula-section {
+    padding-top: 10px; /* Space above each section */
+}
+
+/* Style the abbreviations list */
+#formulas hr { /* Separator before abbreviations */
+    margin: 30px 0;
+    border: 0;
+    border-top: 1px solid var(--input-border);
+}
+.abbreviations-list {
+    columns: 2; /* Try 2 columns for abbreviations */
+    column-gap: 40px;
+    padding-left: 0;
+    list-style: none;
+}
+.abbreviations-list li {
+    margin-bottom: 8px;
+    font-size: 0.9em;
+    break-inside: avoid-column; /* Prevent list items from splitting across columns */
+}
+.abbreviations-list b {
+    font-weight: 600;
+    color: var(--primary-color);
+    display: inline-block;
+    min-width: 65px; /* Adjust as needed for alignment */
+    margin-right: 5px; /* Space after abbreviation */
+}
+
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--input-border);
+    font-size: 0.9em;
+    color: var(--dark-gray);
+}
+footer p {
+    margin-bottom: 5px;
+}
+footer small {
+    font-size: 0.85em;
+    display: block; /* Make disclaimer take its own line */
+    line-height: 1.4;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 25px; /* Adjust padding */
+    }
+    .calc-grid.two-col {
+        grid-template-columns: 1fr; /* Stack label and input */
+        gap: 8px 0;
+    }
+    .calc-grid label {
+        text-align: left; /* Align labels left */
+        margin-bottom: 3px;
+        padding-right: 0; /* Remove right padding */
+    }
+     .calc-grid > div { /* Ensure radios still align left on mobile */
+         text-align: left;
+    }
+    .tabs {
+        padding-bottom: 5px;
+        justify-content: flex-start; /* Align tabs left */
+        overflow-x: auto; /* Allow horizontal scroll if tabs overflow */
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+     .tabs::-webkit-scrollbar { display: none; } /* Hide scrollbar */
+     .tabs { scrollbar-width: none; } /* Hide scrollbar Firefox */
+
+    .tab-button {
+        padding: 8px 12px;
+        font-size: 0.9em;
+        flex-shrink: 0; /* Prevent buttons shrinking */
+    }
+    .formula-grid {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+    .abbreviations-list {
+        columns: 1; /* Single column for abbreviations */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px; /* Less padding on very small screens */
+    }
+    .container {
+        padding: 15px 20px;
+    }
+    header h1 {
+        font-size: 1.5em;
+    }
+    header .logo {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 2em;
+    }
+    .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    button.calc-button, button.clear-button {
+        width: 100%;
+    }
+    .standards-grid {
+        grid-template-columns: 1fr; /* Stack standard info */
+    }
+    .tab-button {
+        padding: 7px 10px;
+        font-size: 0.85em; /* Smaller font on tabs */
+    }
+    .calc-grid label, .calc-grid label.radio-label, #formulas li, .abbreviations-list li {
+        font-size: 0.9rem; /* Adjust base font slightly for better readability */
+    }
+     .calc-grid input[type="number"],
+     .calc-grid input[type="text"],
+     .calc-grid select {
+        font-size: 0.95em; /* Slightly smaller inputs */
+    }
+}
+body {
+    font-size: 15pt;
+}
